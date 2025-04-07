@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #fdf6f9;
+    }
+    .email {
+      font-size: 24px;
+      margin: 20px;
+      color: #e91e63;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      background: #e91e63;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #d81b60;
+    }
+  </style>
+</head>
+<body>
+  <h1>💌 Email Generator</h1>
+  <div class="email" id="emailBox">Click to generate</div>
+  <button onclick="generateEmail()">Generate Email</button>
+  <button onclick="copyEmail()">Copy Email</button>
+
+  <script>
+    function generateEmail() {
+      const chars = "abcdefghijklmnopqrstuvwxyz1234567890";
+      let username = "";
+      for (let i = 0; i < 10; i++) {
+        username += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      const email = username + "@yourdomain.com";  // Change domain if needed
+      document.getElementById("emailBox").textContent = email;
+    }
+
+    function copyEmail() {
+      const email = document.getElementById("emailBox").textContent;
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Copied: " + email);
+      });
+    }
+  </script>
+</body>
+</html>
